@@ -42,7 +42,6 @@ public class CompanyUtil {
         //第二种需要导入类的包，依赖太强，不导包就抛编译错误。
         //一般都第三种，一个字符串可以传入也可写在配置文件中等多种方法。
 
-
         try {
             getConstructors();
             getFields();
@@ -93,13 +92,15 @@ public class CompanyUtil {
 
         //实例化一个Person对象
         Object obj = clazz.getConstructor().newInstance();
-        method.setAccessible(true);//解除私有限定
+        //解除私有限定
+        method.setAccessible(true);
         method.invoke(obj);
 
         Log.i(TAG, "***************获取私有的showWithStr()方法******************");
         method = clazz.getDeclaredMethod("showWithStr", String.class);
         Log.i(TAG, method.toString());
-        method.setAccessible(true);//解除私有限定
+        //解除私有限定
+        method.setAccessible(true);
         Object result = method.invoke(obj, "you catch me");//需要两个参数，一个是要调用的对象（获取有反射），一个是实参
         Log.i(TAG, "返回值：" + result);
     }
@@ -147,7 +148,7 @@ public class CompanyUtil {
 
         //获取一个对象  
         Object obj = clazz.getConstructor().newInstance();//产生Student对象--》Student person = new Student();
-        //暴力反射，解除私有限定
+        //解除私有限定
         field.setAccessible(true);
         //为字段设置值  
         field.set(obj, "刘德华");//为Student对象中的name属性赋值--》person.name = "刘德华"
@@ -190,7 +191,6 @@ public class CompanyUtil {
             Log.i(TAG, c.toString() + "\n");
         }
 
-
         Log.i(TAG, "************所有的构造方法(包括：私有、受保护、默认、公有)***************");
         conArray = clazz.getDeclaredConstructors();
         for (Constructor c : conArray) {
@@ -211,7 +211,7 @@ public class CompanyUtil {
         Log.i(TAG, "******************获取私有构造方法，并调用*******************************");
         con = clazz.getDeclaredConstructor(String.class);
         Log.i(TAG, con.toString() + "\n");
-        //暴力访问(忽略掉访问修饰符)
+        //解除私有限定
         con.setAccessible(true);
         //调用构造方法
         obj = con.newInstance("腾讯");
