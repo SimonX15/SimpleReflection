@@ -8,5 +8,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        testReflection()
+
+        CompanyUtil.testReflection()
+    }
+
+
+    private fun testReflection() {
+        //        val company = Company()
+        //        val clazz = Company::class.java
+
     }
 }

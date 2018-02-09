@@ -18,6 +18,20 @@ public class Company {
     private String code;
     private Person owner;
 
+    Company() {
+
+    }
+
+    private Company(String name) {
+        this.name = name;
+    }
+
+    private Company(String name, String code, Person owner) {
+        this.name = name;
+        this.code = code;
+        this.owner = owner;
+    }
+
     /** 默认数据 */
     private String data = "Default Data";
 
@@ -52,10 +66,5 @@ public class Company {
                 ", code='" + code + '\'' +
                 ", owner=" + owner +
                 '}';
-    }
-
-    /** 更改code */
-    private void transferCode() {
-        code += "SM";
     }
 }

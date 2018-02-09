@@ -1,5 +1,7 @@
 package com.app.simon.simplereflection;
 
+import android.util.Log;
+
 /**
  * desc:
  * date: 2018/2/9
@@ -7,6 +9,8 @@ package com.app.simon.simplereflection;
  * @author xw
  */
 public class Person {
+    /** TAG */
+    public static final String TAG = Person.class.getSimpleName();
 
     /**
      * name : 大雄
@@ -15,6 +19,7 @@ public class Person {
      */
 
     private String name;
+    public String test;
     private String address;
     private String phone;
 
@@ -40,5 +45,15 @@ public class Person {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+
+    private void show() {
+        Log.i(TAG, "执行了show方法");
+    }
+
+    private String showWithStr(String msg) {
+        Log.i(TAG, "执行了showWithStr方法：msg");
+        return msg;
     }
 }
